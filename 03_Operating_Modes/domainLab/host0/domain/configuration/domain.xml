@@ -1491,18 +1491,27 @@
         </socket-binding-group>
     </socket-binding-groups>
     <server-groups>
-        <server-group name="main-server-group" profile="full">
-            <jvm name="default">
-                <heap size="1000m" max-size="1000m"/>
-            </jvm>
-            <socket-binding-group ref="full-sockets"/>
-        </server-group>
-        <server-group name="other-server-group" profile="full-ha">
-            <jvm name="default">
-                <heap size="1000m" max-size="1000m"/>
-            </jvm>
-            <socket-binding-group ref="full-ha-sockets"/>
-        </server-group>
+  	<server-group name="primary-server-group" profile="full">
+        	<jvm name="default">
+            		<heap size="1000m" max-size="1000m"/>
+            		<permgen max-size="256m"/>
+        	</jvm>
+        	<socket-binding-group ref="full-sockets"/>
+    	</server-group>
+   	 <server-group name="secondary-server-group" profile="full">
+        	<jvm name="default">
+            		<heap size="1000m" max-size="1000m"/>
+            		<permgen max-size="256m"/>
+        	</jvm>
+        	<socket-binding-group ref="full-sockets"/>
+    	</server-group>
+   	 <server-group name="singleton-server-group" profile="default">
+        	<jvm name="default">
+            		<heap size="1000m" max-size="1000m"/>
+           	 	<permgen max-size="256m"/>
+        	</jvm>
+        	<socket-binding-group ref="full-sockets"/>
+   	 </server-group>	
     </server-groups>
     <host-excludes>
         <host-exclude name="EAP62">
